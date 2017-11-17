@@ -13,8 +13,8 @@ pipeline {
     stages {
        stage('Build') {
             steps {
-                //sh 'rm "helloworld/helloworld" '
-	    	sh 'helloworld/build.sh'
+                //sh 'rm "test/helloworld/helloworld" '
+	    	sh 'test/helloworld/build.sh'
                 //sh 'echo "Hello World"'
                 /*sh '''
                     echo "Kewl. Multiline shell steps works too"
@@ -26,15 +26,21 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'helloworld/helloworld '
+                sh 'test/helloworld/helloworld'
             }
         }
+
+        stage('Deploy') {
+            steps {
+                sh 'echo Deploying...'
+            }
 
     }
 
     post {
         always {
 	    junit 'build/reports/**/*.xml'
+	    deleteDir() /* clean up our workspace */
             echo 'Post: Build finished.'
         }
         success {
