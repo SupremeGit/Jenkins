@@ -14,7 +14,7 @@ pipeline {
        stage('Build') {
             steps {
                 rm 'helloworld/helloworld '
-	    	helloworld/build.sh
+	    	sh helloworld/build.sh
                 //sh 'echo "Hello World"'
                 sh '''
                     echo "Kewl. Multiline shell steps works too"
