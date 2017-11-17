@@ -29,11 +29,11 @@ pipeline {
             }
 	}
 
-        /*stage('Test') {
+        stage('Test') {
             steps {
                 sh 'test/helloworld/helloworld'
             }
-        }*/
+        }
 
         stage('Deploy') {
             steps {
@@ -44,7 +44,7 @@ pipeline {
 
     post {
         always {
-	    junit 'build/reports/**/*.xml'
+	    //junit 'build/reports/**/*.xml'
 	    deleteDir() /* clean up our workspace */
             echo 'Post: Build finished.'
         }
