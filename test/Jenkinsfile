@@ -1,13 +1,14 @@
 pipeline {
-    #agent { docker 'python:3.5.1' }
-    #stages {
-    #   stage('build') {
-    #        steps {
-    #            sh 'python --version'
-    #        }
-    #    }
-    #}
-    
+    //agent { docker 'python:3.5.1' }
+    /*stages {
+       stage('build') {
+            steps {
+                sh 'python --version'
+            }
+        }
+    }
+    */
+
     agent any
     stages {
        stage('Build') {
@@ -35,7 +36,7 @@ pipeline {
         }
         changed {
             echo 'Post: Pipeline state has changed.'
-            #echo 'For example, if the Pipeline was previously failing but is now successful'
+            //echo 'For example, if the Pipeline was previously failing but is now successful'
         }
     }
 
