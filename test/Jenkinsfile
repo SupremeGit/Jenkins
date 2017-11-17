@@ -24,6 +24,7 @@ pipeline {
 
     post {
         always {
+	    junit 'build/reports/**/*.xml'
             echo 'Post: Build finished.'
         }
         success {
