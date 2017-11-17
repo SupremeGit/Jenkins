@@ -14,8 +14,10 @@ pipeline {
        stage('Build') {
             steps {
                 //sh 'rm "test/helloworld/helloworld" '
+		sh "echo 'PWD = ' ${pwd()}"
 	    	sh 'cd test/helloworld/'
-	    	sh './build.sh'
+		sh "echo 'New PWD =' ${pwd()}"
+		sh './build.sh'
 	    	//sh 'test/helloworld/build.sh'
                 //sh 'echo "Hello World"'
                 /*sh '''
