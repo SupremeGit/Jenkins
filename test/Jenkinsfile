@@ -13,6 +13,7 @@ pipeline {
     stages {
        stage('Build') {
             steps {
+	    	helloworld/build.sh
                 sh 'echo "Hello World"'
                 sh '''
                     echo "Kewl. Multiline shell steps works too"
