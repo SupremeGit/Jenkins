@@ -13,14 +13,22 @@ pipeline {
     stages {
        stage('Build') {
             steps {
+                rm 'helloworld/helloworld '
 	    	helloworld/build.sh
-                sh 'echo "Hello World"'
+                //sh 'echo "Hello World"'
                 sh '''
                     echo "Kewl. Multiline shell steps works too"
                     ls -lah
                 '''
             }
 	}
+
+        stage('Test') {
+            steps {
+                sh 'helloworld/helloworld '
+            }
+        }
+
     }
 
     post {
