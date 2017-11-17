@@ -19,6 +19,7 @@ pipeline {
                     ls -lah
                 '''
             }
+	}
     }
 
     post {
