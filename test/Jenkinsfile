@@ -15,9 +15,12 @@ pipeline {
             steps {
                 //sh 'rm "test/helloworld/helloworld" '
 		sh "echo 'PWD = ' ${pwd()}"
-	    	sh 'cd test/helloworld/'
-		sh "echo 'New PWD =' ${pwd()}"
-		sh './build.sh'
+	    	//sh 'cd test/helloworld/'
+		dir ('test/helloworld') {
+		   sh "echo 'New PWD =' ${pwd()}"
+		   sh './build.sh'
+		}
+
 	    	//sh 'test/helloworld/build.sh'
                 //sh 'echo "Hello World"'
                 /*sh '''
