@@ -14,14 +14,12 @@ pipeline {
        stage('Build') {
             steps {
                 //sh 'rm "test/helloworld/helloworld" '
-		sh "echo 'PWD = ' ${pwd()}"
-	    	//sh 'cd test/helloworld/'
+		//sh "echo 'PWD = ' ${pwd()}"
 		dir ('test/helloworld') {
-		   sh "echo 'New PWD =' ${pwd()}"
+		   //sh "echo 'New PWD =' ${pwd()}"
 		   sh './build.sh'
 		}
 
-	    	//sh 'test/helloworld/build.sh'
                 //sh 'echo "Hello World"'
                 /*sh '''
                     echo "Kewl. Multiline shell steps works too"
@@ -31,11 +29,11 @@ pipeline {
             }
 	}
 
-        stage('Test') {
+        /*stage('Test') {
             steps {
                 sh 'test/helloworld/helloworld'
             }
-        }
+        }*/
 
         stage('Deploy') {
             steps {
