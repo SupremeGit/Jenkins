@@ -14,7 +14,7 @@ pipeline {
        stage('Build') {
             steps {
                 //sh 'rm "test/helloworld/helloworld" '
-	    	sh 'test/helloworld/'
+	    	sh 'cd test/helloworld/'
 	    	sh './build.sh'
 	    	//sh 'test/helloworld/build.sh'
                 //sh 'echo "Hello World"'
