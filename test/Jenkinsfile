@@ -1,10 +1,42 @@
 pipeline {
-    agent { docker 'python:3.5.1' }
+    #agent { docker 'python:3.5.1' }
+    #stages {
+    #   stage('build') {
+    #        steps {
+    #            sh 'python --version'
+    #        }
+    #    }
+    #}
+    
+    agent any
     stages {
-        stage('build') {
+       stage('Build') {
             steps {
-                sh 'python --version'
+                sh 'echo "Hello World"'
+                sh '''
+                    echo "Multiline shell steps works too"
+                    ls -lah
+                '''
             }
+    }
+
+    post {
+        always {
+            echo 'Post: Build finished.'
+        }
+        success {
+            echo 'Post: Build successful.'
+        }
+        failure {
+            echo 'Post: Build failed.'
+        }
+        unstable {
+            echo 'Post: Build marked as unstable.'
+        }
+        changed {
+            echo 'Post: Pipeline state has changed.'
+            #echo 'For example, if the Pipeline was previously failing but is now successful'
         }
     }
+
 }
