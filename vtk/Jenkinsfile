@@ -1,0 +1,57 @@
+pipeline {
+    agent any
+    stages {
+       stage('Configure') {
+            steps {
+	    	//sh "echo 'PWD = ' ${pwd()}"
+		dir ('vtk/') {
+		   sh "echo 'New PWD =' ${pwd()}"
+		   sh './build-vtk-dashboard.sh --configure'
+		}
+            }
+	}
+
+       stage('Build') {
+            steps {
+		dir ('vtk/') {
+		   sh "echo 'New PWD =' ${pwd()}"
+		   sh './build-vtk-dashboard.sh --make'
+		}
+            }
+	}
+
+        stage('Test') {
+            steps {
+                sh 'echo Testing (not implemented).'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'echo Deploying(not implemented).'
+            }
+	}
+    }
+
+    post {
+        always {
+	    //junit 'build/reports/**/*.xml'
+	    //deleteDir() /* clean up our workspace */
+            echo 'Post: Build finished.'
+        }
+        success {
+            echo 'Post: Build successful.'
+        }
+        failure {
+            echo 'Post: Build failed.'
+        }
+        unstable {
+            echo 'Post: Build marked as unstable.'
+        }
+        changed {
+            echo 'Post: Pipeline state has changed.'
+            //echo 'For example, if the Pipeline was previously failing but is now successful'
+        }
+    }
+
+}
